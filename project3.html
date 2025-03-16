@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness Website</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #333;
+      color: #fff;
+      padding: 1rem 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    nav .nav-links {
+      list-style: none;
+      display: flex;
+    }
+
+    nav .nav-links li {
+      margin-left: 20px;
+    }
+
+    nav .nav-links a {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
+      border-radius: 10px;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .cta-button {
+      background: #ff6f61;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: #e65a50;
+    }
+
+    .about {
+      background: url('https://images.unsplash.com/photo-1599058917212-d750089bc07e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80') no-repeat center center/cover;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+
+    .about::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5); /* Dark overlay for better readability */
+    }
+
+    .about-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    .about-content h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .services {
+      background: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      padding: 50px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .services::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5); /* Dark overlay for better readability */
+    }
+
+    .services h2 {
+      position: relative;
+      z-index: 1;
+      color: #fff;
+    }
+
+    .service-cards {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+      padding: 20px;
+      margin: 10px;
+      border-radius: 5px;
+      width: 30%;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      margin-bottom: 20px;
+    }
+
+    .card button {
+      background: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .card button:hover {
+      background: #ff6f61;
+    }
+
+    .service-details {
+      display: none;
+      padding: 20px;
+      background: #fff;
+      border-radius: 5px;
+      margin-top: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-details img {
+      max-width: 100%;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .service-details h3 {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+    }
+
+    .service-details p {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+    }
+
+    .contact {
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .contact form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact input, .contact textarea {
+      margin-bottom: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .contact button {
+      background: #333;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Fitness Hub</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Transform Your Body, Transform Your Life</h1>
+      <p>Join us today and start your fitness journey!</p>
+      <a href="#services" class="cta-button">Get Started</a>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="about-content">
+      <h2>About Fitness Hub</h2>
+      <p>At Fitness Hub, we are passionate about helping you achieve your health and fitness goals. Our team of certified trainers and nutrition experts are here to guide you every step of the way. Whether you're a beginner or an advanced athlete, we have programs tailored just for you.</p>
+      <p>Join us today and take the first step towards a healthier, stronger, and happier you!</p>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <h2>Our Services</h2>
+    <div class="service-cards">
+      <div class="card">
+        <h3>Personal Training</h3>
+        <p>One-on-one sessions with certified trainers.</p>
+        <button onclick="showDetails('personal-training')">Learn More</button>
+        <div id="personal-training" class="service-details">
+          <img src="https://images.unsplash.com/photo-1594737625785-a6cbdabd333c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Personal Training">
+          <h3>Personal Training</h3>
+          <p><strong>Timings:</strong> Monday to Friday, 6 AM - 8 PM</p>
+          <p><strong>Fees:</strong> $50 per session</p>
+          <p><strong>Diet Plan:</strong> Customized meal plans based on your fitness goals.</p>
+          <p><strong>Description:</strong> Our personal training sessions are tailored to your individual needs, helping you achieve your fitness goals faster.</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Group Classes</h3>
+        <p>Join our group classes for motivation and fun.</p>
+        <button onclick="showDetails('group-classes')">Learn More</button>
+        <div id="group-classes" class="service-details">
+          <img src="https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Group Classes">
+          <h3>Group Classes</h3>
+          <p><strong>Timings:</strong> Monday to Saturday, 7 AM - 7 PM</p>
+          <p><strong>Fees:</strong> $20 per class or $150 monthly</p>
+          <p><strong>Diet Plan:</strong> General meal plans for weight loss and muscle gain.</p>
+          <p><strong>Description:</strong> Our group classes are designed to keep you motivated while having fun with like-minded individuals.</p>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Nutrition Plans</h3>
+        <p>Customized meal plans to complement your workouts.</p>
+        <button onclick="showDetails('nutrition-plans')">Learn More</button>
+        <div id="nutrition-plans" class="service-details">
+          <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1453&q=80" alt="Nutrition Plans">
+          <h3>Nutrition Plans</h3>
+          <p><strong>Timings:</strong> Flexible, based on your schedule</p>
+          <p><strong>Fees:</strong> $100 for a 3-month plan</p>
+          <p><strong>Diet Plan:</strong> Personalized meal plans based on your dietary preferences and fitness goals.</p>
+          <p><strong>Description:</strong> Our nutrition plans are designed to fuel your body for optimal performance and recovery.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form id="contact-form">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea id="message" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2023 Fitness Hub. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Function to show service details
+    function showDetails(serviceId) {
+      // Hide all service details
+      document.querySelectorAll('.service-details').forEach(detail => {
+        detail.style.display = 'none';
+      });
+
+      // Show the selected service details
+      const details = document.getElementById(serviceId);
+      details.style.display = 'block';
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Form submission handling
+    document.getElementById('contact-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      if (name && email && message) {
+        alert('Thank you for contacting us! We will get back to you soon.');
+        document.getElementById('contact-form').reset();
+      } else {
+        alert('Please fill out all fields.');
+      }
+    });
+  </script>
+</body>
+</html>
